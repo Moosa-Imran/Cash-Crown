@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Cash Crown - DashBoard</title>
+    <link rel="stylesheet" href="asset/common/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css">
+    <link href="asset/common/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="preloader"></div>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top header-inner-pages">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+            <div class="d-flex flex-wrap align-items-center">
+                <button type="button" class="sidebar-open-btn me-3">
+                    <i class="bi bi-arrow-bar-left"></i>
+                    <i class="bi bi-arrow-bar-right"></i>
+                </button>
+                <h1 class="logo me-auto me-lg-0">
+                    <a href="/">
+                        <img class="img-fluid rounded sm-device-img text-align" src="asset/common/images/logo/logo.png" width="100%" alt="pp">
+                    </a>
+                </h1>
+            </div>
+            <div class="header-right d-flex">
+                <div class="dropdown ms-3">
+                    <button class="dropdown-toggle user-toggle-menu" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="asset/common/images/user/profile.png" alt="pp">
+                        <span id="name" class="text-white ms-2">Name</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="/profile/setting">Settings</a></li>
+                        <li><a class="dropdown-item text-danger" href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header><!-- End Header -->
+
+    <main id="main" class="dashboard-main">
+        <section class="dashboard-section">
+            <div class="d-sidebar">
+                <ul class="d-sidebar-menu">
+                    <li class="active">
+                        <a href="/dashboard"><i class="fas fa-layer-group"></i> Dashboard</a>
+                    </li>
+                    <li class="has_submenu">
+                        <a href="#0"><i class="fas fa-funnel-dollar"></i> Investment</a>
+                        <ul class="submenu">
+                            <li><a href="/investmentplan"><i class="fas fa-chart-simple"></i> Investment plans</a></li>
+                            <li><a href="/investments"><i class="fas fa-clock-rotate-left"></i> Invest History</a></li>
+                        </ul>
+                    </li>
+                    <li class="has_submenu">
+                        <a href="#0"><i class="fas fa-hand-holding-usd"></i> Withdraw</a>
+                        <ul class="submenu">
+                            <li><a href="/withdraw"><i class="fas fa-money-bill-transfer"></i> Withdraw</a></li>
+                            <li><a href="/withdrawals"><i class="fas fa-clock-rotate-left"></i> Withdraw History</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/ticket"><i class="fas fa-headset"></i> Support</a></li>
+                    <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+                <div class="d-plan-notice mt-4 mx-3">
+                    <p class="mb-0">Your current plan <span id="plan">-N/A</span></p>
+                    <a href="/investmentplan">Update plan <i class="fas fa-arrow-up"></i></a>
+                </div>
+            </div>
+
+            <div class="dashboard-body-part">
+                <div class="row gy-4">
+                    <!-- Current Balance and Withdraw Method Section -->
+                    <div class="col-xxl-8 col-lg-6">
+                        <div class="card">
+                            <form action="" method="post">
+                                <input type="hidden" name="_token" value="J7J7eDytogDYQVa27I8xylLTSaxaJZesp2ycbLMR">
+                                
+                                <div class="card-header">
+                                    <h4 class="mb-0">
+                                        Current balance: <span class="color-change">1,000.00 $</span>
+                                    </h4>
+                                </div>
+                                
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="">Withdraw method</label>
+                                        <select name="method" id="" class="form-select">
+                                            <option value="" selected>Select method</option>
+                                            <option value="1" data-url="https://hyipmax.springsoftit.com/demo/withdraw/fetch/1">
+                                                Mari Fela
+                                            </option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="row appendData"></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            
+                    <!-- Withdraw Instruction Section -->
+                    <div class="col-xxl-4 col-lg-6 withdraw-ins">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="mb-0">Withdraw Instruction</h4>
+                            </div>
+                            <div class="card-body">
+                                <p class="instruction"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </section>
+    </main><!-- End #main -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></a>
+
+    <script src="asset/common/js/jquery.min.js"></script>
+    <script src="asset/common/js/bootstrap.bundle.min.js"></script>
+    <script src="asset/common/js/main.js"></script>
+
+    <script>
+        $(function() {
+            'use strict';
+    
+            // Event listener for withdrawal method selection change
+            $('select[name=method]').on('change', function() {
+                const selectedMethod = $(this).val();
+    
+                if (selectedMethod === '') {
+                    // Hide the section if no method is selected
+                    $('.appendData').addClass('d-none');
+                    $('.instruction').text('');
+                    return;
+                }
+    
+                // Show the appendData section and append the HTML
+                $('.appendData').removeClass('d-none');
+                appendHtmlForMethod();
+            });
+    
+            // Function to append the HTML based on selection
+            function appendHtmlForMethod() {
+                // Static HTML structure including withdraw instruction
+                const withdrawInstruction = "Please follow the instructions carefully."; // Replace with your custom text if needed
+                $('.instruction').html(withdrawInstruction);
+    
+                const html = `
+                    <div class="col-md-12 mb-3 mt-3">
+                        <label for="">Withdraw amount <span class="text-danger">*</span></label>
+                        <input type="text" name="amount" class="form-control amount" required>
+                        <p class="text-small color-change mb-0 mt-1">
+                            <span>Min amount: 100.00</span>
+                            <span>Max amount: 5000.00</span>
+                        </p>
+                    </div>
+    
+                    <div class="col-md-12 mb-3">
+                        <label>Withdraw charge</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control charge" value="50.00" required disabled>
+                            <div class="input-group-text bg-main text-white border-0">
+                                <span class="withdraw_charge_type">fixed</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-12 mb-3">
+                        <label for="">Final withdraw amount <span class="text-danger">*</span></label>
+                        <input type="text" name="final_amo" class="form-control final_amo" required readonly>
+                    </div>
+    
+                    <div class="col-md-12 mb-3">
+                        <label for="">Account email / wallet address <span class="text-danger">*</span></label>
+                        <input type="text" name="email" class="form-control" required>
+                    </div>
+    
+                    <div class="col-md-12 mb-3">
+                        <label for="">Account information</label>
+                        <textarea class="form-control" name="account_information" rows="5"></textarea>
+                    </div>
+    
+                    <div class="col-md-12 mb-3">
+                        <label for="">Additional note</label>
+                        <textarea class="form-control" name="note" rows="5"></textarea>
+                    </div>
+    
+                    <div class="col-md-12">
+                        <button class="sp_theme_btn w-100" type="submit">Withdraw now</button>
+                    </div>
+                `;
+    
+                // Append the static HTML to the DOM
+                $('.appendData').html(html);
+            }
+        });
+    </script>
+    
+    <script>
+        'use strict'
+        fetch('/fetchUser')
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === true) {
+            // Update the name with first name and first letter of last name
+            const fullName = `${data.user.fname} ${data.user.lname.charAt(0)}.`;
+            document.getElementById('name').textContent = fullName;
+
+            // Check if the user has subscribed to a plan
+            if (data.user.plan === "none") {
+                alert("Please subscribe to an Investment Plan.");
+            } else {
+                // Update the plan element with the user's current plan
+                document.getElementById('plan').textContent = data.user.plan;
+            }
+        } else {
+            console.log("User is not authenticated");
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching user data:', error);
+    });
+
+
+        // responsive menu slideing
+        $(".d-sidebar-menu>li>a").on("click", function() {
+            var element = $(this).parent("li");
+            if (element.hasClass("open")) {
+                element.removeClass("open");
+                element.find("li").removeClass("open");
+                element.find("ul").slideUp(500, "linear");
+            } else {
+                element.addClass("open");
+                element.children("ul").slideDown();
+                element.siblings("li").children("ul").slideUp();
+                element.siblings("li").removeClass("open");
+                element.siblings("li").find("li").removeClass("open");
+                element.siblings("li").find("ul").slideUp();
+            }
+        });
+
+        $('.sidebar-open-btn').on('click', function() {
+            $(this).toggleClass('active');
+            $('.d-sidebar').toggleClass('active');
+        });
+    </script>
+
+</body>
+
+</html>

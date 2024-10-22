@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Cash Crown - DashBoard</title>
+    <link rel="stylesheet" href="asset/common/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css">
+    <link href="asset/common/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="preloader"></div>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top header-inner-pages">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+            <div class="d-flex flex-wrap align-items-center">
+                <button type="button" class="sidebar-open-btn me-3">
+                    <i class="bi bi-arrow-bar-left"></i>
+                    <i class="bi bi-arrow-bar-right"></i>
+                </button>
+                <h1 class="logo me-auto me-lg-0">
+                    <a href="/">
+                        <img class="img-fluid rounded sm-device-img text-align" src="asset/common/images/logo/logo.png" width="100%" alt="pp">
+                    </a>
+                </h1>
+            </div>
+            <div class="header-right d-flex">
+                <div class="dropdown ms-3">
+                    <button class="dropdown-toggle user-toggle-menu" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="asset/common/images/user/profile.png" alt="pp">
+                        <span id="name" class="text-white ms-2">Name</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="/profile/setting">Settings</a></li>
+                        <li><a class="dropdown-item text-danger" href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header><!-- End Header -->
+
+    <main id="main" class="dashboard-main">
+        <section class="dashboard-section">
+            <div class="d-sidebar">
+                <ul class="d-sidebar-menu">
+                    <li class="active">
+                        <a href="/dashboard"><i class="fas fa-layer-group"></i> Dashboard</a>
+                    </li>
+                    <li class="has_submenu">
+                        <a href="#0"><i class="fas fa-funnel-dollar"></i> Investment</a>
+                        <ul class="submenu">
+                            <li><a href="/investmentplan"><i class="fas fa-chart-simple"></i> Investment plans</a></li>
+                            <li><a href="/investments"><i class="fas fa-clock-rotate-left"></i> Invest History</a></li>
+                        </ul>
+                    </li>
+                    <li class="has_submenu">
+                        <a href="#0"><i class="fas fa-hand-holding-usd"></i> Withdraw</a>
+                        <ul class="submenu">
+                            <li><a href="/withdraw"><i class="fas fa-money-bill-transfer"></i> Withdraw</a></li>
+                            <li><a href="/withdrawals"><i class="fas fa-clock-rotate-left"></i> Withdraw History</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/ticket"><i class="fas fa-headset"></i> Support</a></li>
+                    <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+                <div class="d-plan-notice mt-4 mx-3">
+                    <p class="mb-0">Your current plan <span class="plan">-N/A</span></p>
+                    <a href="/investmentplan">Update plan <i class="fas fa-arrow-up"></i></a>
+                </div>
+            </div>
+
+            <div class="dashboard-body-part">
+                <div class="row gy-4">
+                    <div class="col-xxl-5">
+                        <div class="d-box-one h-100">
+                            <div class="icon">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="content">
+                                <span class="caption-title">Account balance</span>
+                                <h3 class="d-box-one-amount">1,000.00 $</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-7">
+                        <div class="row gy-4">
+                            <div class="col-sm-6">
+                                <div class="d-box-three">
+                                    <div class="icon">
+                                        <i class="fas fa-hand-holding-usd"></i>
+                                    </div>
+                                    <div class="content">
+                                        <span class="caption-title">Total withdraw</span>
+                                        <h3 class="d-box-three-amount">0.00 $</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-box-three">
+                                    <div class="icon">
+                                        <i class="fas fa-funnel-dollar"></i>
+                                    </div>
+                                    <div class="content">
+                                        <span class="caption-title">Total deposit</span>
+                                        <h3 class="d-box-three-amount">0.00 $</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-box-three">
+                                    <div class="icon">
+                                        <i class="fas fa-bolt"></i>
+                                    </div>
+                                    <div class="content">
+                                        <span class="caption-title">Current invest</span>
+                                        <h3 class="d-box-three-amount">0 $</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-box-three">
+                                    <div class="icon">
+                                        <i class="far fa-calendar-check"></i>
+                                    </div>
+                                    <div class="content">
+                                        <span class="caption-title">Current plan</span>
+                                        <h3 class="d-box-three-amount plan">N/A</h3>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <!-- New Entries -->
+                            <div class="col-sm-6">
+                                <div class="d-box-three">
+                                    <div class="icon">
+                                        <i class="fas fa-hourglass-half"></i>
+                                    </div>
+                                    <div class="content">
+                                        <span class="caption-title">Pending Invest</span>
+                                        <h3 class="d-box-three-amount">0 $</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-box-three">
+                                    <div class="icon">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div class="content">
+                                        <span class="caption-title">Pending Withdraw</span>
+                                        <h3 class="d-box-three-amount">0 $</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-box-three">
+                                    <div class="icon">
+                                        <i class="fas fa-gift"></i>
+                                    </div>
+                                    <div class="content">
+                                        <span class="caption-title">Referral Earning</span>
+                                        <h3 class="d-box-three-amount">0 $</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-box-three">
+                                    <div class="icon">
+                                        <i class="fas fa-user-friends"></i>
+                                    </div>
+                                    <div class="content">
+                                        <span class="caption-title">Total Referrals</span>
+                                        <h3 id="total_ref" class="d-box-three-amount">0</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End of New Entries -->
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <label for="refer-link" class="form-label">Your Referral Link</label>
+                    <div class="input-group mb-3">
+                        <input type="text" id="refer-link" class="form-control copy-text"
+                            value="https://cashcrown.org/register.html?ref=username" 
+                            placeholder="referallink.com/refer" aria-label="Referral Link" 
+                            readonly>
+                        <button type="button" class="input-group-text copy sp_theme_btn" 
+                            id="basic-addon2">Copy</button>
+                    </div>
+                </div>
+                
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0">Reference Tree</h5>
+                            </div>
+                            <div class="card-body text-center">
+                                <i class="far fa-sad-tear display-1"></i>
+                                <p class="mt-3">No reference user found</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </section>
+    </main>
+    <!-- End #main -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></a>
+
+    <script src="asset/common/js/jquery.min.js"></script>
+    <script src="asset/common/js/bootstrap.bundle.min.js"></script>
+    <script src="asset/common/js/main.js"></script>
+
+    <script>
+        'use strict';
+        
+        $(document).ready(function() {
+            // Fetch user information and redirect if authenticated
+            $.getJSON('/fetchUser', function(data) {
+                if (data.status === true) {
+                    // Update the name with first name and first letter of last name
+                    const fullName = `${data.user.fname} ${data.user.lname.charAt(0)}.`;
+                    $('#name').text(fullName);
+    
+                    // Check if the user has subscribed to a plan
+                    if (data.user.plan === "none") {
+                        alert("Please subscribe to an Investment Plan.");
+                    } else {
+                        // Update the plan element with the user's current plan
+                        $('.plan').text(data.user.plan);
+                    }
+                } else {
+                    console.log("User is not authenticated");
+                }
+            }).fail(function(jqxhr, textStatus, error) {
+                console.error('Error fetching user data:', error);
+            });
+            
+// Call the /chkref API
+$.ajax({
+    url: '/chkref',  // API endpoint
+    method: 'GET',
+    success: function(response) {
+        console.log(response); // Log the response for debugging
+
+        // Check if the response has the referredUsers array
+        if (response.referredUsers && Array.isArray(response.referredUsers)) {
+            // Count the number of referred users
+            const referralCount = response.referredUsers.length;
+
+            // Update the referral count in the DOM
+            $('#total_ref').text(referralCount);
+
+            // Create a responsive table layout if there are referred users
+            if (referralCount > 0) {
+                let tableHTML = `
+                    <div class="table-responsive">
+                        <table class="table sp_site_table">
+                            <thead>
+                                <tr>
+                                    <th>Sr</th>
+                                    <th>Username</th>
+                                    <th>Register At</th>
+                                    <th>Current Plan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                `;
+
+                // Populate the table with the referred users
+                response.referredUsers.forEach((user, index) => {
+                    tableHTML += `
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td>${user.username}</td>
+                            <td>${user.registeredAt ? new Date(user.registeredAt).toLocaleString() : 'N/A'}</td>
+                            <td>${user.plan ? user.plan : 'N/A'}</td>
+                        </tr>
+                    `;
+                });
+
+                tableHTML += `
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+
+                // Append the table to the card body
+                $('.card-body').html(tableHTML);
+            } else {
+                // Handle case where no referred users are found
+                $('.card-body').html(`
+                    <i class="far fa-sad-tear display-1"></i>
+                    <p class="mt-3">No reference user found</p>
+                `);
+            }
+        } else {
+            alert('No referrals found.');
+        }
+    },
+    error: function(xhr, status, error) {
+        // Handle any errors from the API
+        console.error('Error fetching referral count:', error);
+        alert('Unable to fetch referral count. Please try again later.');
+    }
+});
+ 
+            // Responsive menu sliding
+            $(".d-sidebar-menu>li>a").on("click", function() {
+                var element = $(this).parent("li");
+                if (element.hasClass("open")) {
+                    element.removeClass("open");
+                    element.find("li").removeClass("open");
+                    element.find("ul").slideUp(500, "linear");
+                } else {
+                    element.addClass("open");
+                    element.children("ul").slideDown();
+                    element.siblings("li").children("ul").slideUp();
+                    element.siblings("li").removeClass("open");
+                    element.siblings("li").find("li").removeClass("open");
+                    element.siblings("li").find("ul").slideUp();
+                }
+            });
+    
+            $('.sidebar-open-btn').on('click', function() {
+                $(this).toggleClass('active');
+                $('.d-sidebar').toggleClass('active');
+            });
+        });
+    </script>
+    
+
+</body>
+
+</html>
