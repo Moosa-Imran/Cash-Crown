@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Cash Crown - DashBoard</title>
+    <link rel="stylesheet" href="asset/common/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css">
+    <link href="asset/common/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="preloader"></div>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top header-inner-pages">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+            <div class="d-flex flex-wrap align-items-center">
+                <button type="button" class="sidebar-open-btn me-3">
+                    <i class="bi bi-arrow-bar-left"></i>
+                    <i class="bi bi-arrow-bar-right"></i>
+                </button>
+                <h1 class="logo me-auto me-lg-0">
+                    <a href="/">
+                        <img class="img-fluid rounded sm-device-img text-align" src="asset/common/images/logo/logo.png" width="100%" alt="pp">
+                    </a>
+                </h1>
+            </div>
+            <div class="header-right d-flex">
+                <div class="dropdown ms-3">
+                    <button class="dropdown-toggle user-toggle-menu" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="asset/common/images/user/profile.png" alt="pp">
+                        <span id="name" class="text-white ms-2">Name</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="/profile/setting">Settings</a></li>
+                        <li><a class="dropdown-item text-danger" href="#" id="logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header><!-- End Header -->
+
+    <main id="main" class="dashboard-main">
+        <section class="dashboard-section">
+            <div class="d-sidebar">
+                <ul class="d-sidebar-menu">
+                    <li class="active">
+                        <a href="/dashboard"><i class="fas fa-layer-group"></i> Dashboard</a>
+                    </li>
+                    <li class="has_submenu">
+                        <a href="#0"><i class="fas fa-funnel-dollar"></i> Investment</a>
+                        <ul class="submenu">
+                            <li><a href="/investmentplan"><i class="fas fa-chart-simple"></i> Investment plans</a></li>
+                            <li><a href="/investments"><i class="fas fa-clock-rotate-left"></i> Invest History</a></li>
+                        </ul>
+                    </li>
+                    <li class="has_submenu">
+                        <a href="#0"><i class="fas fa-hand-holding-usd"></i> Withdraw</a>
+                        <ul class="submenu">
+                            <li><a href="/withdraw"><i class="fas fa-money-bill-transfer"></i> Withdraw</a></li>
+                            <li><a href="/withdrawals"><i class="fas fa-clock-rotate-left"></i> Withdraw History</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/ticket"><i class="fas fa-headset"></i> Support</a></li>
+                    <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+                <div class="d-plan-notice mt-4 mx-3">
+                    <p class="mb-0">Your current plan <span id="plan">-N/A</span></p>
+                    <a href="/investmentplan">Update plan <i class="fas fa-arrow-up"></i></a>
+                </div>
+            </div>
+
+            <div class="dashboard-body-part">
+                <div class="row gy-4">
+                    <div class="col-md-8 text-md-start text-center">
+                        <!-- Removed the unnecessary ticket status buttons -->
+                    </div>
+                    <div class="col-md-4 text-md-end text-center">
+                        <button id="new-ticket" class="sp_theme_btn btn-sm float-end">Create ticket 
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            
+                <div class="mt-4">
+                    <table class="table sp_site_table">
+                        <thead>
+                            <tr>
+                                <th>Ticket id</th>
+                                <th>Subject</th>
+                                <th>Total reply</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-caption="Status" class="text-center" colspan="100%">No data found</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Create Ticket Modal -->
+            <div class="modal fade" id="add" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <form action="https://hyipmax.springsoftit.com/demo/ticket" enctype="multipart/form-data" method="post">
+                        <input type="hidden" name="_token" value="5BiCZLpcLm7ZxyKT0VCyOoE1vfqphy4oYDBTFcxP">
+                        <div class="modal-content bg-body">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-white">Create Ticket</h5>
+                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true" class="text-light">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Subject</label>
+                                            <input type="text" name="subject" class="form-control" required="" placeholder="Subject here" value="">
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center mt-2">
+                                        <div class="col-lg-12">
+                                            <div class="form-group ticket-comment-box">
+                                                <label for="exampleFormControlTextarea1">Message</label>
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" cols="30" name="message" placeholder="Message"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 mt-3">
+                                            <div id="image-preview" class="image-preview">
+                                                <label for="image-upload" id="image-label" class="text-white">Choose File</label>
+                                                <input type="file" name="file" id="image-upload" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn sp_btn_danger" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="sp_theme_btn">Create Ticket</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Edit Ticket Modal -->
+            <div class="modal fade" id="edit_modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <form action="" enctype="multipart/form-data" method="post">
+                        <input type="hidden" name="_token" value="5BiCZLpcLm7ZxyKT0VCyOoE1vfqphy4oYDBTFcxP">
+                        <input type="hidden" name="_method" value="PUT">
+                        <div class="modal-content bg-body">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-white">Edit Ticket</h5>
+                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true" class="text-light">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Subject</label>
+                                            <input type="text" name="subject" class="form-control" required="" placeholder="Subject here" value="">
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center mt-2">
+                                        <div class="col-lg-12">
+                                            <div class="form-group ticket-comment-box">
+                                                <label for="exampleFormControlTextarea1">Message</label>
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" cols="30" name="message" placeholder="Message"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 mt-3">
+                                            <div id="image-preview" class="image-preview">
+                                                <label for="image-upload" id="image-label" class="text-white">Choose File</label>
+                                                <input type="file" name="file" id="image-upload" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn sp_btn_danger" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn sp_theme_btn">Update Ticket</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Delete Ticket Modal -->
+            <div class="modal fade" tabindex="-3" id="delete" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <form action="" method="POST">
+                        <input type="hidden" name="_token" value="5BiCZLpcLm7ZxyKT0VCyOoE1vfqphy4oYDBTFcxP">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <div class="modal-content bg1">
+                            <div class="modal-header text-white">
+                                <h5 class="modal-title">Delete Support Ticket</h5>
+                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true" class="text-light">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body text-white">
+                                <p>Are you sure you want to delete this ticket?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn sp_btn_danger" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn sp_theme_btn">Delete</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+
+        </section>
+    </main><!-- End #main -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></a>
+
+    <script src="asset/common/js/jquery.min.js"></script>
+    <script src="asset/common/js/bootstrap.bundle.min.js"></script>
+    <script src="asset/common/js/main.js"></script>
+
+
+    <script>
+        'use strict'
+                // Fetch user information and redirect if authenticated
+                fetch('/fetchUser')
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === true) {
+            // Update the name with first name and first letter of last name
+            const fullName = `${data.user.fname} ${data.user.lname.charAt(0)}.`;
+            document.getElementById('name').textContent = fullName;
+
+            // Check if the user has subscribed to a plan
+            if (data.user.plan === "none") {
+                alert("Please subscribe to an Investment Plan.");
+            } else {
+                // Update the plan element with the user's current plan
+                document.getElementById('plan').textContent = data.user.plan;
+            }
+        } else {
+            console.log("User is not authenticated");
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching user data:', error);
+    });
+
+    $('#new-ticket').on('click', function() {
+    const modal = $('#add');
+    modal.modal('show');
+});
+
+$('.edit-modal').on('click', function(e) {
+    e.preventDefault();
+    const modal = $('#edit_modal');
+    modal.find('form').attr('action', $(this).data('route'));
+    modal.find('input[name=subject]').val($(this).data('ticket').subject);
+    modal.find('textarea[name=message]').val($(this).data('message').message);
+    modal.modal('show');
+});
+
+$('.delete').on('click', function(e) {
+    e.preventDefault();
+    const modal = $('#delete');
+    modal.find('form').attr('action', $(this).data('route'));
+    modal.modal('show');
+});
+
+
+                        // responsive menu slideing
+        $(".d-sidebar-menu>li>a").on("click", function() {
+            var element = $(this).parent("li");
+            if (element.hasClass("open")) {
+                element.removeClass("open");
+                element.find("li").removeClass("open");
+                element.find("ul").slideUp(500, "linear");
+            } else {
+                element.addClass("open");
+                element.children("ul").slideDown();
+                element.siblings("li").children("ul").slideUp();
+                element.siblings("li").removeClass("open");
+                element.siblings("li").find("li").removeClass("open");
+                element.siblings("li").find("ul").slideUp();
+            }
+        });
+
+        $('.sidebar-open-btn').on('click', function() {
+            $(this).toggleClass('active');
+            $('.d-sidebar').toggleClass('active');
+        });
+
+        $('#logout').click(function(event) {
+            event.preventDefault();
+        $.ajax({
+            url: '/logout',
+            type: 'POST',
+            success: function(data) {
+                if (data.message === 'Logout successful!') {
+                    window.location.href = '/login.html';
+                } else {
+                    alert('Logout failed. Please try again.');
+                }
+            },
+            error: function() {
+                alert('Logout failed. Please try again later.');
+            }
+        });
+        });
+    </script>
+
+</body>
+
+</html>

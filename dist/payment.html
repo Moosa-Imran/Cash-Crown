@@ -77,49 +77,38 @@
             </div>
 
             <div class="dashboard-body-part">
-                <div class="row gy-4">
-                    <!-- Current Balance and Withdraw Method Section -->
-                    <div class="col-xxl-8 col-lg-6">
-                        <div class="card">
-                            <form action="" method="post">
-                                <input type="hidden" name="_token" value="J7J7eDytogDYQVa27I8xylLTSaxaJZesp2ycbLMR">
-                                
-                                <div class="card-header">
-                                    <h4 class="mb-0">
-                                        Current balance: <span class="color-change">1,000.00 $</span>
-                                    </h4>
-                                </div>
-                                
-                                <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="">Withdraw method</label>
-                                        <select name="method" id="" class="form-select">
-                                            <option value="" selected>Select method</option>
-                                            <option value="1" data-url="https://hyipmax.springsoftit.com/demo/withdraw/fetch/1">
-                                                Mari Fela
-                                            </option>
-                                        </select>
-                                    </div>
-                                    
-                                    <div class="row appendData"></div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                <div class="card-body text-center">
+                    <h4>Pay the Following Amount</h4>
+                    <p><strong>Amount:</strong> 0.05 BTC</p>
+                    <div class="d-flex justify-content-center align-items-center flex-column my-4">
+                        <!-- QR Code Section -->
+                        <img src="asset/common/images/payment/QR code.png" alt="QR Code" class="img-fluid mb-3" width="150">
+                        <p><strong>Wallet Address:</strong></p>
             
-                    <!-- Withdraw Instruction Section -->
-                    <div class="col-xxl-4 col-lg-6 withdraw-ins">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="mb-0">Withdraw Instruction</h4>
-                            </div>
-                            <div class="card-body">
-                                <p class="instruction"></p>
-                            </div>
+                        <!-- Wallet Address with Copy Button -->
+                        <div class="d-flex align-items-center">
+                            <input type="text" id="walletAddress" class="form-control me-2 text-center" value="1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa" readonly style="width: 350px;">
+                            <button class="btn btn-secondary" onclick="copyWalletAddress()">Copy</button>
                         </div>
                     </div>
+                    
+                    <!-- Confirm Button -->
+                    <button class="btn btn-success mt-3">Confirm Payment</button>
                 </div>
             </div>
+            
+            <script>
+                function copyWalletAddress() {
+                    var walletAddress = document.getElementById("walletAddress");
+                    walletAddress.select();
+                    walletAddress.setSelectionRange(0, 99999); // For mobile devices
+                    document.execCommand("copy");
+            
+                    // Optionally, show a message or toast notification
+                    alert("Wallet address copied to clipboard!");
+                }
+            </script>
+            
             
             
         </section>
@@ -131,83 +120,6 @@
     <script src="asset/common/js/bootstrap.bundle.min.js"></script>
     <script src="asset/common/js/main.js"></script>
 
-    <script>
-        $(function() {
-            'use strict';
-    
-            // Event listener for withdrawal method selection change
-            $('select[name=method]').on('change', function() {
-                const selectedMethod = $(this).val();
-    
-                if (selectedMethod === '') {
-                    // Hide the section if no method is selected
-                    $('.appendData').addClass('d-none');
-                    $('.instruction').text('');
-                    return;
-                }
-    
-                // Show the appendData section and append the HTML
-                $('.appendData').removeClass('d-none');
-                appendHtmlForMethod();
-            });
-    
-            // Function to append the HTML based on selection
-            function appendHtmlForMethod() {
-                // Static HTML structure including withdraw instruction
-                const withdrawInstruction = "Please follow the instructions carefully."; // Replace with your custom text if needed
-                $('.instruction').html(withdrawInstruction);
-    
-                const html = `
-                    <div class="col-md-12 mb-3 mt-3">
-                        <label for="">Withdraw amount <span class="text-danger">*</span></label>
-                        <input type="text" name="amount" class="form-control amount" required>
-                        <p class="text-small color-change mb-0 mt-1">
-                            <span>Min amount: 100.00</span>
-                            <span>Max amount: 5000.00</span>
-                        </p>
-                    </div>
-    
-                    <div class="col-md-12 mb-3">
-                        <label>Withdraw charge</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control charge" value="50.00" required disabled>
-                            <div class="input-group-text bg-main text-white border-0">
-                                <span class="withdraw_charge_type">fixed</span>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="col-md-12 mb-3">
-                        <label for="">Final withdraw amount <span class="text-danger">*</span></label>
-                        <input type="text" name="final_amo" class="form-control final_amo" required readonly>
-                    </div>
-    
-                    <div class="col-md-12 mb-3">
-                        <label for="">Account email / wallet address <span class="text-danger">*</span></label>
-                        <input type="text" name="email" class="form-control" required>
-                    </div>
-    
-                    <div class="col-md-12 mb-3">
-                        <label for="">Account information</label>
-                        <textarea class="form-control" name="account_information" rows="5"></textarea>
-                    </div>
-    
-                    <div class="col-md-12 mb-3">
-                        <label for="">Additional note</label>
-                        <textarea class="form-control" name="note" rows="5"></textarea>
-                    </div>
-    
-                    <div class="col-md-12">
-                        <button class="sp_theme_btn w-100" type="submit">Withdraw now</button>
-                    </div>
-                `;
-    
-                // Append the static HTML to the DOM
-                $('.appendData').html(html);
-            }
-        });
-    </script>
-    
     <script>
         'use strict'
         fetch('/fetchUser')
@@ -255,6 +167,7 @@
             $(this).toggleClass('active');
             $('.d-sidebar').toggleClass('active');
         });
+
 
         $('#logout').click(function(event) {
             event.preventDefault();

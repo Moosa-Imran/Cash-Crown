@@ -77,51 +77,85 @@
             </div>
 
             <div class="dashboard-body-part">
-                <div class="row gy-4">
-                    <!-- Current Balance and Withdraw Method Section -->
-                    <div class="col-xxl-8 col-lg-6">
-                        <div class="card">
-                            <form action="" method="post">
-                                <input type="hidden" name="_token" value="J7J7eDytogDYQVa27I8xylLTSaxaJZesp2ycbLMR">
-                                
-                                <div class="card-header">
-                                    <h4 class="mb-0">
-                                        Current balance: <span class="color-change">1,000.00 $</span>
-                                    </h4>
-                                </div>
-                                
-                                <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="">Withdraw method</label>
-                                        <select name="method" id="" class="form-select">
-                                            <option value="" selected>Select method</option>
-                                            <option value="1" data-url="https://hyipmax.springsoftit.com/demo/withdraw/fetch/1">
-                                                Mari Fela
-                                            </option>
-                                        </select>
+                <div class="d-flex justify-content-end mb-3">
+                    <a href="https://hyipmax.springsoftit.com/demo/profile/change/password" class="cmn-btn mb-2">Change Password</a>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <form action="https://hyipmax.springsoftit.com/demo/profile/setting" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="_token" value="5BiCZLpcLm7ZxyKT0VCyOoE1vfqphy4oYDBTFcxP">
+                            <div class="row gy-4 justify-content-center">
+                                <!-- Profile Picture Upload Section -->
+                                <div class="col-md-4 pe-lg-5 pe-md-4 justify-content-center">
+                                    <div class="img-choose-div text-center">
+                                        <p>Profile Picture</p>
+                                        <img class="rounded file-id-preview w-100" id="file-id-preview"
+                                            src="https://hyipmax.springsoftit.com/demo/asset/common/images/placeholder.png" alt="pp">
+                                        <input type="file" name="image" id="imageUpload" class="upload" accept=".png, .jpg, .jpeg" hidden>
+                                        <label for="imageUpload" class="editImg cmn-btn w-100">Choose File</label>
                                     </div>
-                                    
-                                    <div class="row appendData"></div>
                                 </div>
-                            </form>
-                        </div>
-                    </div>
             
-                    <!-- Withdraw Instruction Section -->
-                    <div class="col-xxl-4 col-lg-6 withdraw-ins">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="mb-0">Withdraw Instruction</h4>
+                                <!-- Profile Details Section -->
+                                <div class="col-md-8">
+                                    <div class="update">
+                                        <div class="mb-3">
+                                            <label>First Name</label>
+                                            <input type="text" class="form-control" name="fname" value="Fake" placeholder="Enter first name">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label>Last Name</label>
+                                            <input type="text" class="form-control" name="lname" value="Fake" placeholder="Enter last name">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label>Username</label>
+                                            <input type="text" class="form-control text-white" name="username" value="fake401" placeholder="Enter username">
+                                        </div>
+                                    </div>
+            
+                                    <div class="mb-3">
+                                        <label>Email Address</label>
+                                        <input type="email" class="form-control" name="email" value="[Protected Email For Demo]" placeholder="Enter email">
+                                    </div>
+            
+                                    <div class="mb-3">
+                                        <label>Phone</label>
+                                        <input type="text" class="form-control" name="phone" value="[Protected Phone for Demo]" placeholder="Enter phone">
+                                    </div>
+            
+                                    <!-- Address Section -->
+                                    <div class="row">
+                                        <div class="form-group col-md-6 mb-3">
+                                            <label>Country</label>
+                                            <input type="text" name="country" class="form-control" value="">
+                                        </div>
+            
+                                        <div class="col-md-6 mb-3">
+                                            <label>City</label>
+                                            <input type="text" name="city" class="form-control form_control" value="">
+                                        </div>
+            
+                                        <div class="col-md-6 mb-3">
+                                            <label>Zip</label>
+                                            <input type="text" name="zip" class="form-control form_control" value="">
+                                        </div>
+            
+                                        <div class="col-md-6 mb-3">
+                                            <label>State</label>
+                                            <input type="text" name="state" class="form-control form_control" value="">
+                                        </div>
+                                    </div>
+            
+                                    <button class="cmn-btn mt-3 w-100">Update</button>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <p class="instruction"></p>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
             
             
+
         </section>
     </main><!-- End #main -->
 
@@ -132,85 +166,9 @@
     <script src="asset/common/js/main.js"></script>
 
     <script>
-        $(function() {
-            'use strict';
-    
-            // Event listener for withdrawal method selection change
-            $('select[name=method]').on('change', function() {
-                const selectedMethod = $(this).val();
-    
-                if (selectedMethod === '') {
-                    // Hide the section if no method is selected
-                    $('.appendData').addClass('d-none');
-                    $('.instruction').text('');
-                    return;
-                }
-    
-                // Show the appendData section and append the HTML
-                $('.appendData').removeClass('d-none');
-                appendHtmlForMethod();
-            });
-    
-            // Function to append the HTML based on selection
-            function appendHtmlForMethod() {
-                // Static HTML structure including withdraw instruction
-                const withdrawInstruction = "Please follow the instructions carefully."; // Replace with your custom text if needed
-                $('.instruction').html(withdrawInstruction);
-    
-                const html = `
-                    <div class="col-md-12 mb-3 mt-3">
-                        <label for="">Withdraw amount <span class="text-danger">*</span></label>
-                        <input type="text" name="amount" class="form-control amount" required>
-                        <p class="text-small color-change mb-0 mt-1">
-                            <span>Min amount: 100.00</span>
-                            <span>Max amount: 5000.00</span>
-                        </p>
-                    </div>
-    
-                    <div class="col-md-12 mb-3">
-                        <label>Withdraw charge</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control charge" value="50.00" required disabled>
-                            <div class="input-group-text bg-main text-white border-0">
-                                <span class="withdraw_charge_type">fixed</span>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="col-md-12 mb-3">
-                        <label for="">Final withdraw amount <span class="text-danger">*</span></label>
-                        <input type="text" name="final_amo" class="form-control final_amo" required readonly>
-                    </div>
-    
-                    <div class="col-md-12 mb-3">
-                        <label for="">Account email / wallet address <span class="text-danger">*</span></label>
-                        <input type="text" name="email" class="form-control" required>
-                    </div>
-    
-                    <div class="col-md-12 mb-3">
-                        <label for="">Account information</label>
-                        <textarea class="form-control" name="account_information" rows="5"></textarea>
-                    </div>
-    
-                    <div class="col-md-12 mb-3">
-                        <label for="">Additional note</label>
-                        <textarea class="form-control" name="note" rows="5"></textarea>
-                    </div>
-    
-                    <div class="col-md-12">
-                        <button class="sp_theme_btn w-100" type="submit">Withdraw now</button>
-                    </div>
-                `;
-    
-                // Append the static HTML to the DOM
-                $('.appendData').html(html);
-            }
-        });
-    </script>
-    
-    <script>
         'use strict'
-        fetch('/fetchUser')
+                // Fetch user information and redirect if authenticated
+                fetch('/fetchUser')
     .then(response => response.json())
     .then(data => {
         if (data.status === true) {
@@ -234,7 +192,8 @@
     });
 
 
-        // responsive menu slideing
+
+                        // responsive menu slideing
         $(".d-sidebar-menu>li>a").on("click", function() {
             var element = $(this).parent("li");
             if (element.hasClass("open")) {

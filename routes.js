@@ -166,6 +166,15 @@ router.post('/login', async (req, res) => {
     }
 });
 
+router.post('/logout', (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+            return res.status(500).json({ message: 'Logout failed. Please try again later.' });
+        }
+        res.clearCookie('connect.sid'); 
+        res.status(200).json({ message: 'Logout successful!' });
+    });
+});
 
 // Dashboard Route (Protected)
 router.get('/dashboard', isAuthenticated, (req, res) => {
@@ -186,6 +195,18 @@ router.get('/withdraw', isAuthenticated, (req, res) => {
 
 router.get('/withdrawals', isAuthenticated, (req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'withdrawals.html'));
+});
+
+router.get('/ticket', isAuthenticated, (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'ticket.html'));
+});
+
+router.get('/setting', isAuthenticated, (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'setting.html'));
+});
+
+router.get('/payment', isAuthenticated, (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'payment.html'));
 });
 
 module.exports = router;

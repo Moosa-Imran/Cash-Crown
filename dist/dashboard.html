@@ -39,7 +39,7 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
                         <li><a class="dropdown-item" href="/profile/setting">Settings</a></li>
-                        <li><a class="dropdown-item text-danger" href="/logout">Logout</a></li>
+                        <li><a class="dropdown-item text-danger" href="#" id="logout">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -233,6 +233,7 @@
                     // Update the name with first name and first letter of last name
                     const fullName = `${data.user.fname} ${data.user.lname.charAt(0)}.`;
                     $('#name').text(fullName);
+                    $("#refer-link").val(`https://cashcrown.org/register.html?ref=${data.user.username}`);
     
                     // Check if the user has subscribed to a plan
                     if (data.user.plan === "none") {
@@ -338,6 +339,26 @@ $.ajax({
                 $(this).toggleClass('active');
                 $('.d-sidebar').toggleClass('active');
             });
+
+            $('#logout').click(function(event) {
+        event.preventDefault(); // Prevent the default anchor behavior
+
+        $.ajax({
+            url: '/logout',
+            type: 'POST',
+            success: function(data) {
+                if (data.message === 'Logout successful!') {
+                    window.location.href = '/login.html';
+                } else {
+                    alert('Logout failed. Please try again.');
+                }
+            },
+            error: function() {
+                alert('Logout failed. Please try again later.');
+            }
+        });
+    });
+
         });
     </script>
     

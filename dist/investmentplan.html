@@ -39,7 +39,7 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
                         <li><a class="dropdown-item" href="/profile/setting">Settings</a></li>
-                        <li><a class="dropdown-item text-danger" href="/logout">Logout</a></li>
+                        <li><a class="dropdown-item text-danger" href="#" id="logout">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -258,6 +258,24 @@
         $('.sidebar-open-btn').on('click', function() {
             $(this).toggleClass('active');
             $('.d-sidebar').toggleClass('active');
+        });
+
+        $('#logout').click(function(event) {
+            event.preventDefault();
+        $.ajax({
+            url: '/logout',
+            type: 'POST',
+            success: function(data) {
+                if (data.message === 'Logout successful!') {
+                    window.location.href = '/login.html';
+                } else {
+                    alert('Logout failed. Please try again.');
+                }
+            },
+            error: function() {
+                alert('Logout failed. Please try again later.');
+            }
+        });
         });
     </script>
 
